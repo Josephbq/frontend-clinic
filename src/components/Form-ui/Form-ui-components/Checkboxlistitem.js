@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     Typography,
     Checkbox,
@@ -6,7 +6,16 @@ import {
     ListItemPrefix,
   } from "@material-tailwind/react";
 
-const CheckboxListItem = ({ id, label,name }) => {
+const CheckboxListItem = ({ id, label,name, onChange}) => {
+  const [isChecked, setChecked] = useState(false);  // Definir el estado local
+
+  const handleChange = () => {
+    const newState = !isChecked;
+    setChecked(newState);
+
+    // Llamar a la función onChange para informar al componente padre del cambio
+    onChange && onChange(label, newState);
+  };
   return (
     <ListItem className="p-0">
       <label
@@ -23,6 +32,7 @@ const CheckboxListItem = ({ id, label,name }) => {
             containerProps={{
               className: "p-0",
             }}
+            onChange={handleChange}
           />
         </ListItemPrefix>
         <Typography color="white" className="font-medium">

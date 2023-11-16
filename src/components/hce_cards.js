@@ -16,6 +16,7 @@ import {
 } from "@material-tailwind/react";
 import { MagnifyingGlassIcon, PlusIcon } from "@heroicons/react/24/outline";
 
+
 export function HceC() {
   const { user } = useUser();
   const [data, setData] = useState([]);

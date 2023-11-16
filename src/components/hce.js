@@ -66,9 +66,6 @@ function Hce() {
             {renderStepContent()}
           </CardBody>
           <CardFooter className="pt-0">
-            <Button variant="gradient" fullWidth>
-              Guardar
-            </Button>
             <div className="w-full py-4 px-8">
               <Stepper
                 activeStep={activeStep}

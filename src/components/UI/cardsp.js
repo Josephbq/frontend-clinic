@@ -8,8 +8,12 @@ import {
   Avatar,
   Button,
 } from "@material-tailwind/react";
+import { format } from 'date-fns';
+import { es } from 'date-fns/locale';
 
 export function Cardp({ nombre, apellido, fecha, dom, idp }) {
+  const fechabd = new Date(fecha);
+  const fechacorregida = format(fechabd, "dd MMMM yyyy", { locale: es });
   return (
     <Card color="teal" shadow={true} className="w-full max-w-[26rem] m-4" >
       <CardHeader
@@ -33,7 +37,7 @@ export function Cardp({ nombre, apellido, fecha, dom, idp }) {
         </div>
       </CardHeader>
       <CardBody className="m-4">
-        <Typography>Fecha de N: {fecha}</Typography>
+        <Typography>Fecha de N: {fechacorregida}</Typography>
         <Typography>Domicilio: {dom}</Typography>
       </CardBody>
     </Card>

@@ -4,15 +4,18 @@ import {
     CardBody,
     Typography,
   } from "@material-tailwind/react";
-
+import { format } from 'date-fns';
+import { es } from 'date-fns/locale';
 
 export function Cardinfodemo({fecha,talla,peso,imc,fc,fr,pa,so,temp,otr}){
+    const fechabd = new Date(fecha);
+    const fechacorregida = format(fechabd, "dd MMMM yyyy", { locale: es });
     return (
         <Card className="m-4" color="teal">
           <CardBody className="flex gap-4 items-left">
             <div className="grid">
             <Typography variant="h5" color="blue-gray" className="items-left">
-                FECHA : {fecha}
+                Fecha de consulta : {fechacorregida}
             </Typography>
             <Typography variant="h5" color="blue-gray" className="items-left">
                 Talla : {talla}

@@ -6,7 +6,10 @@ import {
     ListItemPrefix,
   } from "@material-tailwind/react";
 
-const Radiobtnlist = ({ id, label,name }) => {
+const Radiobtnlist = ({ id, label,name,onChange }) => {
+  const handleChange = (e) => {
+    onChange(e.target.value);
+  };
   return (
     <ListItem className="p-0">
       <label
@@ -23,6 +26,7 @@ const Radiobtnlist = ({ id, label,name }) => {
             containerProps={{
               className: "p-0",
             }}
+            onChange={handleChange}
           />
         </ListItemPrefix>
         <Typography color="white" className="font-medium">
