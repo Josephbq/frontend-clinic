@@ -73,7 +73,20 @@ function AnteNoPato() {
   const registerPaciente = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}register_paciente`, { fechanac: fechaNacimiento, telefono: telefono, nombres: nombres, apellidop: apellidoPaterno, apellidom: apellidoMaterno, sexo: sexo, ci: ci, domicilio: direccion, estado: user.sessionId });
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_URL}register_paciente`,
+        {
+          fechanac: fechaNacimiento,
+          telefono: telefono,
+          nombres: nombres,
+          apellidop: apellidoPaterno,
+          apellidom: apellidoMaterno,
+          sexo: sexo,
+          ci: ci,
+          domicilio: direccion,
+          estado: user.sessionId,
+        }
+      );
       if (response.data.message === 'Register successful') {
         toast('Registrado Parcialmente', {
           icon: '👏',
@@ -146,17 +159,57 @@ function AnteNoPato() {
         Antecendentes no patologicos
       </Typography>
       <div className="m-4 flex flex-col lg:flex-row lg:items-center gap-4">
-        <Input value={apellidoPaterno} onChange={(e) => setApellidoPaterno(e.target.value)} label="Apellido Paterno" type="text" />
-        <Input value={apellidoMaterno} onChange={(e) => setApellidoMaterno(e.target.value)}label="Apellido Materno" type="text" />
-        <Input value={nombres} onChange={(e) => setNombres(e.target.value)}label="Nombre(s)" type="text" />
-        <Input value={fechaNacimiento} onChange={(e) => setFechaNacimiento(e.target.value)} label="Fecha de Nacimiento" type="text" />
-        <Input value={telefono} onChange={(e) => setTelefono(e.target.value)} label="Telefono" type="text" />
-        <Input value={ci} onChange={(e) => setCi(e.target.value)} label="Ci" type="text" />
+        <Input
+          value={apellidoPaterno}
+          onChange={(e) => setApellidoPaterno(e.target.value)}
+          label="Apellido Paterno"
+          type="text"
+        />
+        <Input
+          value={apellidoMaterno}
+          onChange={(e) => setApellidoMaterno(e.target.value)}
+          label="Apellido Materno"
+          type="text"
+        />
+        <Input
+          value={nombres}
+          onChange={(e) => setNombres(e.target.value)}
+          label="Nombre(s)"
+          type="text"
+        />
+        <Input
+          value={fechaNacimiento}
+          onChange={(e) => setFechaNacimiento(e.target.value)}
+          label="Fecha de Nacimiento"
+          type="date"
+        />
+        <Input
+          value={telefono}
+          onChange={(e) => setTelefono(e.target.value)}
+          label="Telefono"
+          type="number"
+        />
+        <Input
+          value={ci}
+          onChange={(e) => setCi(e.target.value)}
+          label="Ci"
+          type="number"
+        />
       </div>
       <div className="m-4 flex flex-col lg:flex-row lg:items-center gap-4">
-        <Input value={direccion} onChange={(e) => setDireccion(e.target.value)} label="Direccion" type="text" />
-        <Input  value={sexo} onChange={(e) => setSexo(e.target.value)} label="Sexo" type="text" />
-        <Button  onClick={registerPaciente}>Guardar</Button>
+        <Input
+          value={direccion}
+          onChange={(e) => setDireccion(e.target.value)}
+          label="Direccion"
+          type="text"
+        />
+        <Input
+          value={sexo}
+          onChange={(e) => setSexo(e.target.value)}
+          label="Sexo"
+          type="text"
+        />
+        <Button onClick={registerPaciente}>Guardar</Button>
       </div>
 
       <div className="m-4 flex flex-col lg:flex-row gap-4">
@@ -169,25 +222,25 @@ function AnteNoPato() {
               id="vertical-list-primario"
               name="vertical-list-estudios"
               label="Primario"
-              onChange={() => manejarCambioNivelEstudios('Primario')}
+              onChange={() => manejarCambioNivelEstudios("Primario")}
             />
             <Radiobtnlist
               id="vertical-list-secundario"
               name="vertical-list-estudios"
               label="Secundario"
-              onChange={() => manejarCambioNivelEstudios('Secundario')}
+              onChange={() => manejarCambioNivelEstudios("Secundario")}
             />
             <Radiobtnlist
               id="vertical-list-tecnico"
               name="vertical-list-estudios"
               label="Tecnico"
-              onChange={() => manejarCambioNivelEstudios('Tecnico')}
+              onChange={() => manejarCambioNivelEstudios("Tecnico")}
             />
             <Radiobtnlist
               id="vertical-list-universitario"
               name="vertical-list-estudios"
               label="Universitario"
-              onChange={() => manejarCambioNivelEstudios('Universitario')}
+              onChange={() => manejarCambioNivelEstudios("Universitario")}
             />
           </List>
         </Card>
@@ -200,19 +253,19 @@ function AnteNoPato() {
               id="vertical-list-casado"
               name="vertical-list-estado"
               label="Casado(a)"
-              onChange={() => manejarCambioCivil('Casado(a)')}
+              onChange={() => manejarCambioCivil("Casado(a)")}
             />
             <Radiobtnlist
               id="vertical-list-soltero"
               name="vertical-list-estado"
               label="Soltero(a)"
-              onChange={() => manejarCambioCivil('Soltero(a)')}
+              onChange={() => manejarCambioCivil("Soltero(a)")}
             />
             <Radiobtnlist
               id="vertical-list-concubino"
               name="vertical-list-estado"
               label="Concubino(a)"
-              onChange={() => manejarCambioCivil('Concubino(a)')}
+              onChange={() => manejarCambioCivil("Concubino(a)")}
             />
           </List>
         </Card>
@@ -225,25 +278,25 @@ function AnteNoPato() {
               id="vertical-list-casa"
               name="vertical-list-ocupacion"
               label="Lab. de casa"
-              onChange={() => manejarCambioOcupacion('Lab. de casa')}
+              onChange={() => manejarCambioOcupacion("Lab. de casa")}
             />
             <Radiobtnlist
               id="vertical-list-comerciante"
               name="vertical-list-ocupacion"
               label="Comerciante"
-              onChange={() => manejarCambioCivil('Comerciante')}
+              onChange={() => manejarCambioCivil("Comerciante")}
             />
             <Radiobtnlist
               id="vertical-list-empleado"
               name="vertical-list-ocupacion"
               label="Empleado(a)"
-              onChange={() => manejarCambioCivil('Empleado(a)')}
+              onChange={() => manejarCambioCivil("Empleado(a)")}
             />
             <Radiobtnlist
               id="vertical-list-estudiante"
               name="vertical-list-ocupacion"
               label="Estudiante"
-              onChange={() => manejarCambioCivil('Estudiante')}
+              onChange={() => manejarCambioCivil("Estudiante")}
             />
           </List>
         </Card>
@@ -258,25 +311,25 @@ function AnteNoPato() {
               id="vertical-list-altiplano"
               name="vertical-list-origen"
               label="Altiplano"
-              onChange={() => manejarCambioOrigen('Altiplano')}
+              onChange={() => manejarCambioOrigen("Altiplano")}
             />
             <Radiobtnlist
               id="vertical-list-valle"
               name="vertical-list-origen"
               label="Valle"
-              onChange={() => manejarCambioOrigen('Valle')}
+              onChange={() => manejarCambioOrigen("Valle")}
             />
             <Radiobtnlist
               id="vertical-list-yungas"
               name="vertical-list-origen"
               label="Yungas"
-              onChange={() => manejarCambioOrigen('Yungas')}
+              onChange={() => manejarCambioOrigen("Yungas")}
             />
             <Radiobtnlist
               id="vertical-list-llanos"
               name="vertical-list-origen"
               label="llanos"
-              onChange={() => manejarCambioOrigen('llanos')}
+              onChange={() => manejarCambioOrigen("llanos")}
             />
           </List>
         </Card>
@@ -289,13 +342,13 @@ function AnteNoPato() {
               id="vertical-list-adecuado"
               name="vertical-list-saneamiento"
               label="Adecuado"
-              onChange={() => manejarCambioSanamiento('Adecuado')}
+              onChange={() => manejarCambioSanamiento("Adecuado")}
             />
             <Radiobtnlist
               id="vertical-list-inade"
               name="vertical-list-saneamiento"
               label="Inadecuado"
-              onChange={() => manejarCambioSanamiento('Inadecuado')}
+              onChange={() => manejarCambioSanamiento("Inadecuado")}
             />
           </List>
         </Card>
@@ -308,13 +361,13 @@ function AnteNoPato() {
               id="vertical-list-aliade"
               name="vertical-list-alimentacion"
               label="Adecuado"
-              onChange={() => manejarCambioAlimentacion('Adecuado')}
+              onChange={() => manejarCambioAlimentacion("Adecuado")}
             />
             <Radiobtnlist
               id="vertical-list-aliina"
               name="vertical-list-alimentacion"
               label="Inadecuado"
-              onChange={() => manejarCambioAlimentacion('Inadecuado')}
+              onChange={() => manejarCambioAlimentacion("Inadecuado")}
             />
           </List>
         </Card>
@@ -327,24 +380,32 @@ function AnteNoPato() {
               id="vertical-list-alcohol"
               name="vertical-list-habitos"
               label="Alcohol"
-              onChange={(valor, isChecked) => manejarCambioHabitos(valor, isChecked)}
+              onChange={(valor, isChecked) =>
+                manejarCambioHabitos(valor, isChecked)
+              }
             />
             <CheckboxListItem
               id="vertical-list-tabaco"
               name="vertical-list-habitos"
               label="Tabaco"
-              onChange={(valor, isChecked) => manejarCambioHabitos(valor, isChecked)}
+              onChange={(valor, isChecked) =>
+                manejarCambioHabitos(valor, isChecked)
+              }
             />
             <CheckboxListItem
               id="vertical-list-drogas"
               name="vertical-list-habitos"
               label="Drogas"
-              onChange={(valor, isChecked) => manejarCambioHabitos(valor, isChecked)}
+              onChange={(valor, isChecked) =>
+                manejarCambioHabitos(valor, isChecked)
+              }
             />
           </List>
         </Card>
       </div>
-      <Button onClick={registerantecedentes} className="gap-4">Guardar</Button>
+      <Button onClick={registerantecedentes} className="gap-4">
+        Guardar
+      </Button>
     </Card>
   );
 }

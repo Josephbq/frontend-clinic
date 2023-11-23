@@ -58,6 +58,7 @@ const LoginForm = ({ setAuth }) => {
           setUser({
             username: response.data.username,
             sessionId: response.data.session_id,
+            id: response.data.idd,
           });
           history.push({
             pathname: "/adm",
@@ -72,6 +73,7 @@ const LoginForm = ({ setAuth }) => {
           setUser({
             username: response.data.username,
             sessionId: response.data.session_id,
+            id: response.data.id,
           });
           history.push({
             pathname: "/panel",

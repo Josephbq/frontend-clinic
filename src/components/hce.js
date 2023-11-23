@@ -14,6 +14,7 @@ import AnteNoPato from "./Form-ui/AnteNoPato";
 import AntePato from "./Form-ui/AntePato";
 import ExaFisi from "./Form-ui/ExaFisi";
 import DiagTra from "./Form-ui/DiagTra";
+import Consulta from "./Form-ui/Consulta";
 import Nbvr from "./UI/navbar";
 import { useUser } from "./UserContext";
 
@@ -35,6 +36,8 @@ function Hce() {
       case 2:
         return <ExaFisi />;
       case 3:
+        return <Consulta />;
+      case 4:
         return <DiagTra />;
       default:
         return null;
@@ -82,6 +85,9 @@ function Hce() {
                   <TrophyIcon className="h-5 w-5" />
                 </Step>
                 <Step onClick={() => setActiveStep(3)}>
+                  <ClipboardDocumentCheckIcon className="h-5 w-5" />
+                </Step>
+                <Step onClick={() => setActiveStep(4)}>
                   <ClipboardDocumentCheckIcon className="h-5 w-5" />
                 </Step>
               </Stepper>
