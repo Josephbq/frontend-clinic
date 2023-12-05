@@ -6,17 +6,20 @@ function PanelPrincipal() {
   const { user } = useUser();
  
   return (
+    <>
+    <p>{user.sessionId}</p>
     <Nbvr
       linkto="/panel"
       user={user.sessionId} 
       firstlink="/hce" 
       firstlabel="Hce" 
-      secondlink="/panel"   ///cambiar
+      secondlink="/perfil"   ///cambiar
       secondlabel="Perfil"
       thirdlink="/panel"  ///cambiar
       thirdlabel="Horarios"
       visibility="visible"
     />
+    </>
   );
 }
 export default PanelPrincipal;

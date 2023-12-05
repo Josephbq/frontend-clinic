@@ -15,6 +15,7 @@ import {
   IconButton,
 } from "@material-tailwind/react";
 import { MagnifyingGlassIcon, PlusIcon } from "@heroicons/react/24/outline";
+import PreLoader1 from "./PreLoader1";
 
 
 export function HceC() {
@@ -22,12 +23,6 @@ export function HceC() {
   const [data, setData] = useState([]);
   const cardsPerPage = 5;
   const [currentPage, setCurrentPage] = useState(1);
-
-  const indexOfLastCard = currentPage * cardsPerPage;
-  const indexOfFirstCard = indexOfLastCard - cardsPerPage;
-  const currentCards = data.slice(indexOfFirstCard, indexOfLastCard);
-
-  const totalPages = Math.ceil(data.length / cardsPerPage);
 
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
@@ -44,6 +39,16 @@ export function HceC() {
       });
   }, []);
 
+  const indexOfLastCard = currentPage * cardsPerPage;
+  const indexOfFirstCard = indexOfLastCard - cardsPerPage;
+  const currentCards = data.slice(indexOfFirstCard, indexOfLastCard);
+
+  const totalPages = Math.ceil(data.length / cardsPerPage);
+  
+  if(!currentCards){
+    return <PreLoader1 />
+  }
+
   return (
     <>
       <Nbvr
@@ -51,7 +56,7 @@ export function HceC() {
         user={user.username}
         firstlink="/hce"
         firstlabel="Hce"
-        secondlink="/panel" ///cambiar
+        secondlink="/perfil" ///cambiar
         secondlabel="Perfil"
         thirdlink="/panel" ///cambiar
         thirdlabel="Horarios"

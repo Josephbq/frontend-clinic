@@ -11,6 +11,7 @@ import { HceC } from './components/hce_cards';
 import { Detalles } from './components/detailp';
 import { HceEvo } from './components/hceEvo';
 import { Toaster } from 'react-hot-toast';
+import { Perfil } from './components/perfil';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/hceEvo" exact component={HceEvo} />
           <Route path="/detalles/:pacienteId" exact component={Detalles} />
           <Route path="/raudi" exact component={Registrosaudi} />
+          <Route path="/perfil" exact component={Perfil} />
       </div>
     </Router>
   );

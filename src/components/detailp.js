@@ -13,6 +13,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { PlusIcon } from "@heroicons/react/24/outline";
+import PreLoader1 from "./PreLoader1";
 
 export function Detalles() {
   const { user } = useUser();
@@ -30,7 +31,9 @@ export function Detalles() {
   }, [pacienteId]);
 
   if (!pacienteInfo) {
-    return <div>Cargando...</div>;
+    return(
+      <PreLoader1 />
+    )
   }
 
   const historialesPorFecha = {};
@@ -49,7 +52,7 @@ export function Detalles() {
         user={user.username}
         firstlink="/hce"
         firstlabel="Hce"
-        secondlink="/panel" ///cambiar
+        secondlink="/perfil" ///cambiar
         secondlabel="Perfil"
         thirdlink="/panel" ///cambiar
         thirdlabel="Horarios"

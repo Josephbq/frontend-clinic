@@ -6,6 +6,7 @@ import { toast } from "react-hot-toast";
 import { Stack, Box, TextField, MenuItem } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { motion } from "framer-motion";
+import { Input } from "@material-tailwind/react";
 /////////////////////////////////////////////////////////////
 let easing = [0.6, -0.05, 0.01, 0.99];
 const animate = {
@@ -48,13 +49,6 @@ const HoursForm = ({ setAuth }) => {
     dia: Yup.string().required("Dia requerido"),
   });
 
-  const onHoureChange = (timeValue) => {
-    setValue(timeValue);
-  };
-  const onHoureChange2 = (timeValue2) => {
-    setValue2(timeValue2);
-  };
-
   const formik = useFormik({
     initialValues: {
       doc: "",
@@ -72,26 +66,28 @@ const HoursForm = ({ setAuth }) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}hour`, { doc: values.doc, dia: values.dia, horae: value, horas: value2});
-      if (response.data.message === 'register_successful') {
-        toast('Registrado Correctamente ', {
-          icon: '👏',
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_URL}hour`,
+        { doc: values.doc, dia: values.dia, horae: value, horas: value2 }
+      );
+      if (response.data.message === "register_successful") {
+        toast("Registrado Correctamente ", {
+          icon: "👏",
           duration: 4000,
           position: "top-right",
         });
       }
-      if(response.data.message === 'problem'){
-        toast.error('Ocurrio un problema', {
+      if (response.data.message === "problem") {
+        toast.error("Ocurrio un problema", {
           position: "top-right",
         });
       }
     } catch (error) {
-      console.error('Login failed:', error);
+      console.error("Login failed:", error);
       if (error.response) {
-        console.error('Respuesta del servidor:', error.response.data);
+        console.error("Respuesta del servidor:", error.response.data);
       }
     }
-
   };
 
   return (
@@ -150,8 +146,24 @@ const HoursForm = ({ setAuth }) => {
               initial={{ opacity: 0, y: 40 }}
               animate={animate}
               direction={{ xs: "column", sm: "row" }}
-            >
-            </Stack>
+            ></Stack>
+            <Input
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+              label="Hora de entrada"
+              type="time"
+              color="indigo"
+            />
+          </Stack>
+          <Stack>
+            <Input
+              value={value2}
+              onChange={(e) => setValue2(e.target.value)}
+              label="Hora de salida"
+              type="time"
+              color="indigo"
+            />
+            
           </Stack>
 
           <Box

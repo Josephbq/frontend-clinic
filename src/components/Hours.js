@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import Nbvr from "./UI/navbar";
 import { useUser } from "./UserContext";
 
+
 //////////////////////////////////
 const RootStyle = styled("div")({
   background: "rgb(249, 250, 251)",

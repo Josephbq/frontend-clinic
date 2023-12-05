@@ -50,7 +50,7 @@ function Hce() {
         user={user.username}
         firstlink="/hce"
         firstlabel="Hce"
-        secondlink="/panel" ///cambiar
+        secondlink="/perfil" ///cambiar
         secondlabel="Perfil"
         thirdlink="/panel" ///cambiar
         thirdlabel="Horarios"
